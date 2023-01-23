@@ -1,0 +1,27 @@
+# permissions for end users to view kafkawrappers.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  labels:
+    app.kubernetes.io/name: clusterrole
+    app.kubernetes.io/instance: kafkawrapper-viewer-role
+    app.kubernetes.io/component: rbac
+    app.kubernetes.io/created-by: sample-go-operator
+    app.kubernetes.io/part-of: sample-go-operator
+    app.kubernetes.io/managed-by: kustomize
+  name: kafkawrapper-viewer-role
+rules:
+- apiGroups:
+  - kafka-wrapper.sample.com
+  resources:
+  - kafkawrappers
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - kafka-wrapper.sample.com
+  resources:
+  - kafkawrappers/status
+  verbs:
+  - get
